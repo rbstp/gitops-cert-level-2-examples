@@ -8,38 +8,37 @@ on:
   workflow_dispatch:
     inputs:
       source_env:
-        description: 'Source environment'
+        description: "Source environment"
         required: true
-        default: 'qa' 
+        default: "qa"
         type: choice
         options:
-        - qa
-        - staging
-        - prod 
+          - qa
+          - staging
+          - prod
       target_env:
-        description: 'Target environment'
+        description: "Target environment"
         required: true
-        default: 'staging' 
+        default: "staging"
         type: choice
         options:
-        - qa
-        - staging
-        - prod 
+          - qa
+          - staging
+          - prod
       promote_container:
-        description: 'Promote container tag'
-        required: true 
-        type: boolean 
-        default: 'true'
+        description: "Promote container tag"
+        required: true
+        type: boolean
+        default: "true"
       promote_configmaps:
-        description: 'Also promote application settings'
-        required: true 
-        type: boolean 
+        description: "Also promote application settings"
+        required: true
+        type: boolean
       messsage:
-        description: 'Commit message'
-        required: true 
-        type: string  
-        default: 'Application promotion'
-
+        description: "Commit message"
+        required: true
+        type: string
+        default: "Application promotion"
 
 jobs:
   promote:
@@ -51,17 +50,17 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Copy container tag
-        if:  ${{ inputs.promote_container }}
+        if: ${{ inputs.promote_container }}
         uses: canastro/copy-file-action@master
         with:
           source: "environment-promotion/envs/${{ inputs.source_env }}/version.yml"
           target: "environment-promotion/envs/${{ inputs.target_env }}/version.yml"
-      - name: Copy settings 
-        if:  ${{ inputs.promote_configmaps }}
+      - name: Copy settings
+        if: ${{ inputs.promote_configmaps }}
         uses: canastro/copy-file-action@master
         with:
           source: "environment-promotion/envs/${{ inputs.source_env }}/settings.yml"
-          target: "environment-promotion/envs/${{ inputs.target_env }}/settings.yml"         
+          target: "environment-promotion/envs/${{ inputs.target_env }}/settings.yml"
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: ${{ inputs.messsage }}    
+          commit_message: ${{ inputs.messsage }}

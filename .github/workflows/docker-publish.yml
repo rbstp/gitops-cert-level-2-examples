@@ -10,11 +10,10 @@ on:
   workflow_dispatch:
     inputs:
       docker_tag:
-        description: 'Docker tag'
+        description: "Docker tag"
         required: true
-        default: 'latest' 
+        default: "latest"
         type: string
-
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -22,10 +21,8 @@ env:
   # github.repository as <account>/<repo>
   # IMAGE_NAME: ${{ github.repository }}
 
-
 jobs:
   build-push:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -35,7 +32,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-
       # https://github.com/docker/login-action
       - name: Log into registry ${{ env.REGISTRY }}
         uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
@@ -43,7 +39,6 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
 
       - id: imagename
         uses: ASzc/change-string-case-action@v2
@@ -60,4 +55,3 @@ jobs:
           file: ./image-updater/source-code/Dockerfile
           push: true
           tags: ghcr.io/${{ steps.imagename.outputs.lowercase }}:${{ inputs.docker_tag }}
-
