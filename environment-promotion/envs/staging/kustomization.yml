@@ -5,15 +5,14 @@ namespace: staging
 namePrefix: staging-
 
 resources:
-- ../../base
+  - ../../base
 
 components:
   - ../../variants/non-prod
 
 patchesStrategicMerge:
-- deployment.yml
-- version.yml
-- replicas.yml
-- settings.yml
-- service.yml
-
+  - deployment.yml
+  - version.yml
+  - replicas.yml
+  - settings.yml
+  - service.yml

@@ -4,7 +4,7 @@ WORKDIR /tmp/simple-go-app
 
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build 
+RUN CGO_ENABLED=0 GOOS=linux go build
 
 FROM scratch
 COPY --from=build-env /tmp/simple-go-app/gitops-promotion-source-code /app/gitops-promotion-source-code

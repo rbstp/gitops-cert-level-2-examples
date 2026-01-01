@@ -14,7 +14,7 @@ spec:
         app: notification-tester
     spec:
       containers:
-      - name: webserver-simple
-        image: docker.io/kostiscodefresh/notification-tester:1.0
-        ports:
-        - containerPort: 8080
+        - name: webserver-simple
+          image: docker.io/kostiscodefresh/notification-tester:1.0
+          ports:
+            - containerPort: 8080

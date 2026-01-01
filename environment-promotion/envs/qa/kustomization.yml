@@ -5,14 +5,13 @@ namespace: qa
 namePrefix: qa-
 
 resources:
-- ../../base
+  - ../../base
 
 components:
   - ../../variants/non-prod
 
 patchesStrategicMerge:
-- deployment.yml
-- version.yml
-- settings.yml
-- service.yml
-
+  - deployment.yml
+  - version.yml
+  - settings.yml
+  - service.yml

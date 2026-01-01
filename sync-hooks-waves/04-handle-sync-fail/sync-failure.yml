@@ -9,9 +9,9 @@ spec:
   template:
     spec:
       containers:
-      - name: dummy-sync-fail
-        image: alpine
-        command:
-          - "false"
+        - name: dummy-sync-fail
+          image: alpine
+          command:
+            - "false"
       restartPolicy: Never
-  backoffLimit: 2    
+  backoffLimit: 2

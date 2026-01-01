@@ -5,10 +5,7 @@ namespace: qa
 namePrefix: qa-
 
 resources:
-- ../../base
-
+  - ../../base
 
 patchesStrategicMerge:
-- version.yml
-
-
+  - version.yml

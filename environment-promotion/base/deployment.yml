@@ -16,12 +16,11 @@ spec:
         app: trivial-go-web-app
     spec:
       containers:
-      - name: webserver-simple
-        imagePullPolicy: Always
-        image: docker.io/kostiscodefresh/simple-env-app:1.0
-        ports:
-        - containerPort: 8080        
-        env:
-        - name: REGION
-          value: "us"
-
+        - name: webserver-simple
+          imagePullPolicy: Always
+          image: docker.io/kostiscodefresh/simple-env-app:1.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: REGION
+              value: "us"

@@ -4,15 +4,15 @@ metadata:
   namespace: example05
   name: my-db-upgrade
   annotations:
-    argocd.argoproj.io/sync-wave: "-20" 
+    argocd.argoproj.io/sync-wave: "-20"
 spec:
   template:
     spec:
       containers:
-      - name: dummy-run
-        image: alpine
-        command:
-          - "sleep"
-          - "10"
+        - name: dummy-run
+          image: alpine
+          command:
+            - "sleep"
+            - "10"
       restartPolicy: Never
-  backoffLimit: 2    
+  backoffLimit: 2

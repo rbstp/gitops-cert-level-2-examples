@@ -5,15 +5,14 @@ namespace: prod
 namePrefix: prod-
 
 resources:
-- ../../base
+  - ../../base
 
 components:
   - ../../variants/prod
 
 patchesStrategicMerge:
-- deployment.yml
-- version.yml
-- replicas.yml
-- settings.yml
-- service.yml
-
+  - deployment.yml
+  - version.yml
+  - replicas.yml
+  - settings.yml
+  - service.yml
